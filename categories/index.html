@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://sunshineboy818.github.io/categories/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Categories">
+<link rel="stylesheet" href="/scss/style.min.82aebb571a30eb91e8092de55330c6a938539608ddc92a5704fbf878b02a4ea0.css"><meta property='og:title' content="Categories">
 <meta property='og:description' content="演示说明">
 <meta property='og:url' content='https://sunshineboy818.github.io/categories/'>
 <meta property='og:site_name' content='康小轩'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-03-24T18:31:29&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-03-26T03:00:00&#43;08:00 '/>
 <meta name="twitter:title" content="Categories">
 <meta name="twitter:description" content="演示说明"><link rel="alternate" type="application/rss&#43;xml" href="https://sunshineboy818.github.io/categories/index.xml">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -288,7 +288,7 @@
                     <a href="/archives/#2025">
                         
                             <span class="year">2025</span>
-                            <span class="count">2</span>
+                            <span class="count">3</span>
                         
                     </a> 
                 </div>
@@ -462,5 +462,77 @@
     }());
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<div id="aplayer"></div>
+<script>
+    const musicDir = "https://sunshineboy818.github.io/" + 'music/';
+    const songs = [
+        '别知己-海来阿木',
+        '不如见一面-海来阿木，单依纯',
+        '车载-康小轩',
+        '最好的安排-谢天笑',
+        '出现又离开-梁博',
+        '凡人歌-李宗盛',
+        '妈妈说-海来阿木',
+        '三生有幸-海来阿木，陈冰谁-王贰浪',
+        '探故知-吉泽树',
+        '无名的人-孙楠，陈楚生',
+        '戏-阿夏',
+        '这世界有很多人爱你的人-超星，陈奕楠',
+    ];
+
+    let audios = [];
+    songs.forEach(item => {
+        const songInfo = item.split('-');
+        audios.push({
+            name: songInfo[0],
+            artist: songInfo[1],
+            url: musicDir + item + '/song.mp3',
+        });
+    });
+
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+	fixed: true,
+	listMaxHeight: '120px',
+        audio: audios,
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+
+    
+    <script src=https://sunshineboy818.github.io/js/topbar.min.js></script>
+
+
+<script>
+    var pjax = new Pjax({
+      selectors: [".main-container"]
+    })
+    pjax._handleResponse = pjax.handleResponse;
+
+    pjax.handleResponse = function(responseText, request, href, options) {
+      if (request.responseText.match("<html")) {
+        let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+        
+        let bodyClass = newDom.body.className;
+        document.body.setAttribute("class", bodyClass)
+        pjax._handleResponse(responseText, request, href, options);
+        setTimeout(() => {
+            pjax._handleResponse(responseText,request,href,options);
+        },1000)
+      } else {
+        
+      }
+    }
+
+    document.addEventListener('pjax:send', () => {
+        topbar.show();
+    })
+    document.addEventListener('pjax:complete', () =>{
+       window.Stack.init();
+       topbar.hide();
+    })
+</script>
     </body>
 </html>

@@ -7,7 +7,25 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>康小轩</copyright>
-        <lastBuildDate>Mon, 24 Mar 2025 18:31:29 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 26 Mar 2025 03:00:00 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>The sun at 3 a.m</title>
+        <link>https://sunshineboy818.github.io/p/the-sun-at-3-a.m/</link>
+        <pubDate>Wed, 26 Mar 2025 03:00:00 +0800</pubDate>
+        
+        <guid>https://sunshineboy818.github.io/p/the-sun-at-3-a.m/</guid>
+        <description>&lt;h3 id=&#34;heading&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;早上好啊，康小轩。昨天你上了一天的课，虽然很困，很想休息，可是你依然在下午四点五十分下课后，回到宿舍收拾电脑，马不停蹄地去实验室。因为从去年寒假开始你就积极准备比赛，从搭建硬件到昨天总算给自己有了一个交代——你的搬运机器人硬件终于齐了。这让你既感到兴奋又有些心酸。高兴是因为在这个项目中，一次次经历失败，又一次次想出好点子去克服它。当然，期间也有老师和队友的帮助，尽管不多，但依旧在鼓励我坚持下去。初次自己画电路图、连线、打印、焊接、使用硬件完成一个个具体模块的初步测试，效果很好。接下来的目标就是整合这些模块，打造一个结合体。&lt;/p&gt;
+&lt;p&gt;不过，也有心酸之处，因为我们学校参加比赛的人很少有人像我把比赛当成战争一样处理，队伍的人心很分散，大家基本都在无明确目标的学。这就是末流本科的环境吧，我们实验室的一些人也是如此，当你用知识讲逻辑给他们听、教他们技术时，他们却闭门造车。我觉得学习技术不该这样，必须要有包容心，尊重别人的意见，毕竟同在一个实验室，虽然触及自己的盲区，但可以记录下来并通过实践验证。&lt;/p&gt;
+&lt;p&gt;不想再说这些了，回到我自己身上。我利用假期几乎都在兼职，大一在电子厂拉人再加上其他兼职赚了1万元，买了手机，体验了飞机，旅游了南京和上海，去了昆山，体验到了打工人的生活。大二是在西安兼职，做过保安，工地晚班的小工，拍短剧的群演，给用户开抖音橱窗的工作等。有的时候特别难，最难的时候可能两天没吃上饭还不敢和父母说。有时候我不想停下来回忆以前，因为总结起来就一个字：都难。&lt;/p&gt;
+&lt;h3 id=&#34;heading-1&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;忙完这些依旧是晚上九点二十左右，你火急火燎地从实验室出来，因为你晚饭还没吃。没办法，当你买好饭吃完时，都已经快十点半了。然后你就开始为你的新博客添加装饰（比如加音乐播放器，虽然不支持手机播放）。你还用梯子打开GitHub，寻找相关音乐播放的方法，对照包的开发信息一次次尝试。毕竟英语不太好，浏览器翻译出来的英文也不是特别专业，所以还必须得问问AI。等到添加完都已经凌晨三点了。因此你抽出时间发表这篇博客，为自己加油打气，不想再看到大冬天母亲骑着电动车上班的情景，也不想再看到父亲还在别人家屋顶干彩钢瓦活的样子。无论别人怎样压力我、嘲讽我，吹捧我，我都坦然处之。写到这里，想起高中毕业时校长说的一首苏轼的诗句：“竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。”以此自勉！&lt;/p&gt;
+&lt;h3 id=&#34;heading-2&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;写这个博客完全不是我的初衷，以后会把它当作笔记本使用，专门记录嵌入式专业的错误及解决方法。今天这篇文章是我初次写作，作为心中的一面大旗，支撑我努力奋斗。&lt;/p&gt;
+&lt;h3 id=&#34;heading-3&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;行文最后，对自己说：你最棒！哈哈哈！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Autoupload</title>
         <link>https://sunshineboy818.github.io/p/autoupload/</link>
         <pubDate>Mon, 24 Mar 2025 18:31:29 +0800</pubDate>
