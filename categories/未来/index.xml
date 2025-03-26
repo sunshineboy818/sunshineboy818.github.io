@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>未来 on 康小轩</title>
+        <link>https://sunshineboy818.github.io/categories/%E6%9C%AA%E6%9D%A5/</link>
+        <description>Recent content in 未来 on 康小轩</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>康小轩</copyright>
+        <lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sunshineboy818.github.io/categories/%E6%9C%AA%E6%9D%A5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>workday1</title>
+        <link>https://sunshineboy818.github.io/p/workday1/</link>
+        <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sunshineboy818.github.io/p/workday1/</guid>
+        <description>&lt;img src="https://sunshineboy818.github.io/p/workday1/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post workday1" /&gt;&lt;h2 id=&#34;正文&#34;&gt;正文
+&lt;/h2&gt;&lt;p&gt;承接上次文章，从今天开始则进入疯狂的笔记模式输入&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;相继昨天做了机械臂的硬件及软件测试，成功跑通了一段机械臂固定动作去抓取固定位置的物块代码，由于我把测试视频分享到了朋友圈，吸引力一大批好朋友的评论及关注，很多人建议我再努努力，加个机械臂的视觉处理，让机械臂更加自动，更加智能，其实这个摄像头模块的加入也是我这次工训赛比赛之内的一个过程，我不仅要把摄像头加入机械臂，还想着让它加个底盘驱动，模仿工厂搬运机器人，这也是本次大赛的最终目的，&lt;/p&gt;
+&lt;h3 id=&#34;heading-1&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;再加入摄像头模块和底盘驱动模块后，我还有一个大胆的想法，目前虽然没有实际去测试，但是我觉得这是一个非常好的前景，我就先说一下我的想法吧，这个想法就是：当我给机械臂加上摄像头模块和底盘驱动模块连接硬件后，在以前的处理机械臂视觉或智能小车视觉时，大多都是用python的opencv库在编写视觉处理函数，其实也有一些好的学校有好的资源，在视觉方面已经引入了大模型去分析然后自主做出正确判断，而我在以前做5G室外远程驾驶比赛时，用过某度的智能语音合成和手势识别的API，语音合成的效果很好，手势识别因为摄像头的清晰度辨别不是很好，所以导致手势识别很缓慢，时效性很差，而对于本次的项目，如果使用视觉模型的图像多主体检测和通用物体和场景识别，例如：机械臂摄像头用多主体检测获取坐标等参数，而底盘驱动摄像头则用通用物体和场景识别来获取整体移动的真实位置，部署本地计算集群LCC，添加摄像头与机械臂的位置偏移量，机械臂视觉返回参数用本地计算群使用的逆运动学公式求解出机械臂角度，在底盘驱动下的摄像头，通过自身前方位置的标定，可以传递实时参数，然后对于最后自身的动作处理可以创建函数于本地计算集群，然后设置1个阈值和中断，用于底盘驱动的控制，当前方物体小于阈值时，可以产生中断，停止机械臂的抓取，让底盘摄像头的场景识别去自主规划路径，让自身整体保持良好的路径。然后等待机械臂摄像头抓取参数，主体检测参数回传后进行计算及抓取。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;如果真的这样做了，那可以省去很多代码，基于视觉模型可以利用python调用api实现，基于本机计算集群LCC可以进行下载部署，然后自己编写一端用于动作处理的函数，在主函数中调用它就可以完成这个项目。&lt;/p&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;对于这个模型使用方面，前提得有存够的存储空间等硬件性能，而且这些模型都是需要付费的，免费的使用次数很少，不利于开发，假设有足够的经费那就可以潇洒，基本项目一周就可以做好软件代码工作。&lt;/p&gt;
+&lt;h3 id=&#34;heading-4&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;对于实际，本次项目还是编写python，用opencv库，机械臂视觉利用颜色识别，物体检测，色环识别等，再引用数学库去解得舵机角度，通过uart去传给32去抓取，然后用蓝牙先控制机械臂去找到物块仓库的放取角度，然后自己调试舵机顺序，使得机械臂流畅，准确去放进仓库，记录好固定角度及机械臂舵机顺序，然后构建函数去存放；对于底盘驱动摄像头先使用原理和5G远程驾驶路线规划基本相似，灰度转化，阈值分割，检测边线色素，当大于定义阈值时则认为检测到边线，若遇到三岔口等还需补线操作，底盘驱动摄像头传回参数，利用uart给32，去驱动电机。&lt;/p&gt;
+&lt;h2 id=&#34;heading-5&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;对于实际方案来说，成本仅为硬件，软件全靠自己编写，需要不停查找相关资料去引用相关变量或函数，机械臂的仓库放取也得自己测试出实际舵机转动角度的参数，软件开发周期长，不利于快速，高效的应用。&lt;/p&gt;
+&lt;h3 id=&#34;heading-6&#34;&gt;
+&lt;/h3&gt;&lt;p&gt;今天就是基于本次智能搬运项目讲一下自己对于软件方面的看法，下一节预备给自己讲解本次项目硬件电路的搭建。&lt;/p&gt;
+&lt;h2 id=&#34;引用&#34;&gt;引用
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;平凡之路漫长，承载了多少希望与伤&lt;br&gt;
+那些未曾说出的话，都化作心底的力量&lt;br&gt;
+无名的人啊，是否也能找到属于自己的方向&lt;br&gt;
+在这广阔的世界里，哪怕只是一瞬间的光芒&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=ArzmLLtBwMU&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;无名的人 - 孙楠，陈楚生&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;图片&#34;&gt;图片
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday1/florian-klauer-nptLmg6jqDo-unsplash.jpg&#34;
+	width=&#34;1672&#34;
+	height=&#34;798&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday1/florian-klauer-nptLmg6jqDo-unsplash_hu5a81c98fef602f0a9baa7633a4f3310f_103936_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday1/florian-klauer-nptLmg6jqDo-unsplash_hu5a81c98fef602f0a9baa7633a4f3310f_103936_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by Florian Klauer on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;502px&#34;
+	
+&gt;  &lt;img src=&#34;https://sunshineboy818.github.io/p/workday1/luca-bravo-alS7ewQ41M8-unsplash.jpg&#34;
+	width=&#34;1006&#34;
+	height=&#34;667&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday1/luca-bravo-alS7ewQ41M8-unsplash_hu13d2b3e2e1370c215f096448d5d386aa_73609_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday1/luca-bravo-alS7ewQ41M8-unsplash_hu13d2b3e2e1370c215f096448d5d386aa_73609_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by Luca Bravo on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;361px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday1/helena-hertz-wWZzXlDpMog-unsplash.jpg&#34;
+	width=&#34;1004&#34;
+	height=&#34;740&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday1/helena-hertz-wWZzXlDpMog-unsplash_hue0c10967067aea79e0ff19d2fdf84e46_71037_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday1/helena-hertz-wWZzXlDpMog-unsplash_hue0c10967067aea79e0ff19d2fdf84e46_71037_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by Helena Hertz on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;325px&#34;
+	
+&gt;  &lt;img src=&#34;https://sunshineboy818.github.io/p/workday1/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&#34;
+	width=&#34;664&#34;
+	height=&#34;947&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday1/hudai-gayiran-3Od_VKcDEAA-unsplash_hu8aaf9681e0be68bb298393404a713f8a_109853_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday1/hudai-gayiran-3Od_VKcDEAA-unsplash_hu8aaf9681e0be68bb298393404a713f8a_109853_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by Hudai Gayiran on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;70&#34;
+		data-flex-basis=&#34;168px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
