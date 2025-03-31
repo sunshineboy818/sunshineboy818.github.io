@@ -7,7 +7,110 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>康小轩</copyright>
-        <lastBuildDate>Sat, 29 Mar 2025 12:51:52 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 01 Apr 2025 00:58:38 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Workday4</title>
+        <link>https://sunshineboy818.github.io/p/workday4/</link>
+        <pubDate>Tue, 01 Apr 2025 00:58:38 +0800</pubDate>
+        
+        <guid>https://sunshineboy818.github.io/p/workday4/</guid>
+        <description>&lt;img src="https://sunshineboy818.github.io/p/workday4/1.jpg" alt="Featured image of post Workday4" /&gt;&lt;h2 id=&#34;heading&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;正文&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;记录自己做了30多片板子所得出的经验，失败很多次，也成功数十次，一下就是自己悟出的经验。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;电源部分&lt;/p&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;其实在我们目前大多接触的都是低速电路板，它最重要的可就是电源这块了，假使你要做一块基于XXX的XXX设计，那就得考虑电源的输入以及电源的转换。下面就是我做了板子最常见的输入及转换：12V输入转至5V电路；9V输入转至5V电路；7.4V输入转至5V电路，5V输入转至3.3V电路；12V输入转至3.3V电路。说完这些那在设计板子上也得考虑电源线的加粗，那到底加粗多少？一般电源线的加粗和输入电源的电流有关，对于12V输入3A的一般我都是30mil,12V5A加粗到40mil,如果电流更大那就的更粗，切记电源线的加粗，一般电源降压，输入等地方还需要再加些过孔，利于电路板散热，再加过孔时得定好与导线的规则关系，避免使导线短路。&lt;/p&gt;
+&lt;h2 id=&#34;heading-4&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;这些电路怎么输入，输入的接口怎么选择？常见的12V接口有PIN2.54.XT系列，DC电源插头，USB输入口等，这些插口在设计时必须看好对应的锂电池接口，否则又得自己跳线或者裁线。&lt;/p&gt;
+&lt;h2 id=&#34;heading-5&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;降压模块很多，tb上买了连接上去板子也可以正常通路，但是使得线路乱，不简洁，所以我们得设计降压模块，让多余的线全部布线在板内，这样就不会看起来线路很乱，那怎么设计降压模块呢？目前我感觉最好的就是根据自己需求选择合适的降压芯片，降压芯片的选择可以事半功倍，我们可以通过数据手册自定义的调节出我们想要降的电压，同时也可知道最大的电流值为多少，切记仔细看芯片手册，它的输入电容滤波电容，输出电容滤波，电感的选择，二极管的选择等都是有说法的，对于12V电压输入来说，一般我是2个电容滤波来使降压芯片有稳定的输入电压，它的值一般选470uf和0.1uf,对于输出5V的电压，电容为330uf；若对于3V电压输出，得更大点，一般选470uf，这样保证输入输出的电压稳定，不会造成电路板电压不足，为了把电流提升或下降，要么是输入电压和电压&amp;gt;输出电压和电流，选择更大电流的12V电源；要么调节降压电路中的电子元器件的值，一般调节二极管，电感及输出电容，电感调节有公式可参考，输出电容及二极管一般数据手册可说明，也可以自己进行仿真测试。&lt;/p&gt;
+&lt;h2 id=&#34;heading-6&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;关于电路中的通信信号线及天线模块等敏感信号，我一般在电路板中通信信号线布线选择差分布线，或者两线尽可能平行布线，减小2线的长度差；天线等模块一般必须包地加禁止普通，使得尽可能对该模块的影响降低。&lt;/p&gt;
+&lt;h2 id=&#34;heading-7&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;图片展示，以前的练手图
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday4/6.jpg&#34;
+	width=&#34;892&#34;
+	height=&#34;836&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday4/6_hu3ca4717bc0a68ebdd5d0823d561f6d75_266091_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday4/6_hu3ca4717bc0a68ebdd5d0823d561f6d75_266091_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 6 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday4/5.jpg&#34;
+	width=&#34;647&#34;
+	height=&#34;515&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday4/5_hu006099d9dd3029a8aba6c7a4cd3f787c_236193_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday4/5_hu006099d9dd3029a8aba6c7a4cd3f787c_236193_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 5 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday4/3.jpg&#34;
+	width=&#34;1057&#34;
+	height=&#34;507&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday4/3_hu625d194525db133cd3d6aace083ab998_261472_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday4/3_hu625d194525db133cd3d6aace083ab998_261472_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 3 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;500px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday4/4.jpg&#34;
+	width=&#34;752&#34;
+	height=&#34;630&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday4/4_hu655d8b3cc17dc3894da17bd060ec8970_258601_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday4/4_hu655d8b3cc17dc3894da17bd060ec8970_258601_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 4 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;119&#34;
+		data-flex-basis=&#34;286px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday4/2.jpg&#34;
+	width=&#34;810&#34;
+	height=&#34;741&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday4/2_hu4e173be0c98e5711b2fb7866e957548c_221135_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday4/2_hu4e173be0c98e5711b2fb7866e957548c_221135_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 2 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;109&#34;
+		data-flex-basis=&#34;262px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;引用&#34;&gt;引用
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;无论世界如何变迁，心中的那盏灯永不熄灭，&lt;/p&gt;
+&lt;p&gt;指引着迷途的心灵，找到回家的方向。&lt;/p&gt;
+&lt;p&gt;让每一次呼吸，都充满希望的味道，&lt;/p&gt;
+&lt;p&gt;让每一个明天，都成为迎接新生的曙光。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Wb4y1n7FL/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=0967de655cabe0f2408d0d6630f75d64&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;家 - 许巍&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Workday3</title>
         <link>https://sunshineboy818.github.io/p/workday3/</link>
         <pubDate>Sat, 29 Mar 2025 12:51:52 +0800</pubDate>
