@@ -174,8 +174,9 @@
 &lt;/h2&gt;&lt;p&gt;该有的船体，电控都已经有了，现在就可以去写驱动，让板子可以动起来，同时为最后小船的组装搭建良好的基础。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;这个代码是小灯电亮和关闭的程序，我们用这个代码，只要改一下，当蓝牙接通后，小灯打开就可以了，我们使用if语句就行。
-&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/11.jpg&#34;
+&lt;p&gt;这个代码是小灯电亮和关闭的程序，我们用这个代码，只要改一下，当蓝牙接通后，小灯打开就可以了，我们使用if语句就行。&lt;/p&gt;
+&lt;h2 id=&#34;heading-10&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/11.jpg&#34;
 	width=&#34;662&#34;
 	height=&#34;397&#34;
 	srcset=&#34;https://sunshineboy818.github.io/p/workday6/11_huc44ae80c06af354a578919b534fa1179_40139_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/11_huc44ae80c06af354a578919b534fa1179_40139_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -191,8 +192,9 @@
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;接下来我们需要的舵机代码和电机代码
-&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/12.jpg&#34;
+&lt;p&gt;接下来我们需要的舵机代码和电机代码&lt;/p&gt;
+&lt;h2 id=&#34;heading-11&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/12.jpg&#34;
 	width=&#34;701&#34;
 	height=&#34;442&#34;
 	srcset=&#34;https://sunshineboy818.github.io/p/workday6/12_huc678a04721e5f9557d2b96a93020210a_42595_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/12_huc678a04721e5f9557d2b96a93020210a_42595_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -219,12 +221,14 @@
 		data-flex-grow=&#34;114&#34;
 		data-flex-basis=&#34;275px&#34;
 	
-&gt;
-电机和舵机代码，搭配蓝牙信号的发送左，右，前，后的指令后使用它。&lt;/p&gt;
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-12&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;电机和舵机代码，搭配蓝牙信号的发送左，右，前，后的指令后使用它。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;接下来就是蓝牙模块的代码展示
-&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/14.jpg&#34;
+&lt;p&gt;接下来就是蓝牙模块的代码展示&lt;/p&gt;
+&lt;h2 id=&#34;heading-13&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/14.jpg&#34;
 	width=&#34;752&#34;
 	height=&#34;616&#34;
 	srcset=&#34;https://sunshineboy818.github.io/p/workday6/14_hu3c79274fb8f11055277680a60991be08_74319_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/14_hu3c79274fb8f11055277680a60991be08_74319_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -240,10 +244,12 @@
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;然后我们把代码整合一下，用USB线上传进主板里，就可以完成电路驱动了，然后我们将船体和电路驱动用胶带，热熔胶等物体固定，就可以下水测试了。&lt;/p&gt;
+&lt;h2 id=&#34;heading-14&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;然后我们把代码整合一下，用USB线上传进主板里，就可以完成电路驱动了，然后我们将船体和电路驱动用胶带，热熔胶等物体固定，就可以下水测试了。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/15.jpg&#34;
+&lt;h1 id=&#34;heading-15&#34;&gt;
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/15.jpg&#34;
 	width=&#34;597&#34;
 	height=&#34;57&#34;
 	srcset=&#34;https://sunshineboy818.github.io/p/workday6/15_hued0c89505decf0e48ce5c2f571772f6a_9725_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/15_hued0c89505decf0e48ce5c2f571772f6a_9725_1024x0_resize_q75_box.jpg 1024w&#34;
