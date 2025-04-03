@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="正文 紧接着上文设计的电路板充电模块，我们现已有充电模块，电源提供电路板和基本外设的电压和电流已经配置好，接下来我们就可以按照目的寻找我们所要">
+<title>Workday6</title>
+
+<link rel='canonical' href='https://sunshineboy818.github.io/p/workday6/'>
+
+<link rel="stylesheet" href="/scss/style.min.82aebb571a30eb91e8092de55330c6a938539608ddc92a5704fbf878b02a4ea0.css"><meta property='og:title' content="Workday6">
+<meta property='og:description' content="正文 紧接着上文设计的电路板充电模块，我们现已有充电模块，电源提供电路板和基本外设的电压和电流已经配置好，接下来我们就可以按照目的寻找我们所要">
+<meta property='og:url' content='https://sunshineboy818.github.io/p/workday6/'>
+<meta property='og:site_name' content='康小轩'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-03T13:48:39&#43;08:00'/><meta property='article:modified_time' content='2025-04-03T13:48:39&#43;08:00'/><meta property='og:image' content='https://sunshineboy818.github.io/p/workday6/1.jpg' />
+<meta name="twitter:title" content="Workday6">
+<meta name="twitter:description" content="正文 紧接着上文设计的电路板充电模块，我们现已有充电模块，电源提供电路板和基本外设的电压和电流已经配置好，接下来我们就可以按照目的寻找我们所要"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sunshineboy818.github.io/p/workday6/1.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud333012b47664f142cc05dde610dba8f_61053_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😜</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">康小轩</a></h1>
+            <h2 class="site-description">记录美好生活.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://music.163.com/#/user/home?id=574714253'
+                        target="_blank"
+                        title="NetEase Cloud"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <path d="M16.708 0.027c1.745-0.027 3.48-0.011 5.213-0.027 0.105 2.041 0.839 4.12 2.333 5.563 1.491 1.479 3.6 2.156 5.652 2.385v5.369c-1.923-0.063-3.855-0.463-5.6-1.291-0.76-0.344-1.468-0.787-2.161-1.24-0.009 3.896 0.016 7.787-0.025 11.667-0.104 1.864-0.719 3.719-1.803 5.255-1.744 2.557-4.771 4.224-7.88 4.276-1.907 0.109-3.812-0.411-5.437-1.369-2.693-1.588-4.588-4.495-4.864-7.615-0.032-0.667-0.043-1.333-0.016-1.984 0.24-2.537 1.495-4.964 3.443-6.615 2.208-1.923 5.301-2.839 8.197-2.297 0.027 1.975-0.052 3.948-0.052 5.923-1.323-0.428-2.869-0.308-4.025 0.495-0.844 0.547-1.485 1.385-1.819 2.333-0.276 0.676-0.197 1.427-0.181 2.145 0.317 2.188 2.421 4.027 4.667 3.828 1.489-0.016 2.916-0.88 3.692-2.145 0.251-0.443 0.532-0.896 0.547-1.417 0.131-2.385 0.079-4.76 0.095-7.145 0.011-5.375-0.016-10.735 0.025-16.093z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#引用">引用</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/workday6/">
+                <img src="/p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_800x0_resize_q75_box.jpg"
+                        srcset="/p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_800x0_resize_q75_box.jpg 800w, /p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="564" 
+                        loading="lazy"
+                        alt="Featured image of post Workday6" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/workday6/">Workday6</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-03</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="heading">
+</h2><p>正文</p>
+<h2 id="heading-1">
+</h2><p>紧接着上文设计的电路板充电模块，我们现已有充电模块，电源提供电路板和基本外设的电压和电流已经配置好，接下来我们就可以按照目的寻找我们所要用的开发板及所用的外设，接下来我们插入图片，来一一说明我其中的一个项目的设计流程。</p>
+<h2 id="heading-2">
+</h2><p>首先，我们要确定开发板，开发板相当于人的大脑，可以接受信息，并且可以将信息转换为电路板可识别的信号，然后驱动外设完成我们想要电路板去完成的特定动作，我的小窗设计，开发板选择Arduino uno开发板。</p>
+<h2 id="heading-3">
+</h2><p><img src="/p/workday6/1.jpg"
+	width="861"
+	height="607"
+	srcset="/p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_480x0_resize_q75_box.jpg 480w, /p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 1 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="340px"
+	
+>
+<img src="/p/workday6/2.jpg"
+	width="1062"
+	height="702"
+	srcset="/p/workday6/2_hu8390362adc9387939bbc98422102ec93_211918_480x0_resize_q75_box.jpg 480w, /p/workday6/2_hu8390362adc9387939bbc98422102ec93_211918_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 2 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
+	
+>
+<img src="/p/workday6/3.jpg"
+	width="862"
+	height="765"
+	srcset="/p/workday6/3_hu90feb291eb35592f1697371fd7a52684_106882_480x0_resize_q75_box.jpg 480w, /p/workday6/3_hu90feb291eb35592f1697371fd7a52684_106882_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 3 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="270px"
+	
+>
+<img src="/p/workday6/4.jpg"
+	width="841"
+	height="307"
+	srcset="/p/workday6/4_hu9e49fe348e2740cd299e508e91fa3408_98024_480x0_resize_q75_box.jpg 480w, /p/workday6/4_hu9e49fe348e2740cd299e508e91fa3408_98024_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 4 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="273"
+		data-flex-basis="657px"
+	
+></p>
+<h2 id="heading-4">
+</h2><p>通过这几张图，我们可以看到我们的开发板的样子，它由什么部分组成，每个部分有什么功能，我们本次的设计是否可以用这张板子，并且它的电压及电流等注意事项，而选择这个板子就是因为它满足我们小船项目的设计，首先它的电压及电流适合我们前文所说的充电模块可充电，降压模块降压到板子可用的电压和电流。</p>
+<h2 id="heading-5">
+</h2><p>小船首先需要设计的是它的动力装置，比如小船在水上前进，后退，左转，右转应该用什么来实现，我选择的两个电机驱动，因为这个主板刚好有2个直流电机的端口，可以插入到主板上预留的电机端子，我们所选的电机是空心杯电机，它的优点是小巧，轻薄，转速高，适用于水上驱动。
+<img src="/p/workday6/5.jpg"
+	width="647"
+	height="617"
+	srcset="/p/workday6/5_hu63179f7a3ea13e4f2616f9492bab9757_36639_480x0_resize_q75_box.jpg 480w, /p/workday6/5_hu63179f7a3ea13e4f2616f9492bab9757_36639_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 5 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="104"
+		data-flex-basis="251px"
+	
+></p>
+<h2 id="heading-6">
+</h2><p>小船的电机驱动做好了之后，我们其实还需要两个舵机，这两个舵机可以用麦王铁丝拉动船尾的船叶，来实现左转和右转。
+<img src="/p/workday6/6.jpg"
+	width="818"
+	height="616"
+	srcset="/p/workday6/6_hud84615ed088998a94525db311c3eeece_41456_480x0_resize_q75_box.jpg 480w, /p/workday6/6_hud84615ed088998a94525db311c3eeece_41456_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 6 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="318px"
+	
+>
+<img src="/p/workday6/7.jpg"
+	width="643"
+	height="672"
+	srcset="/p/workday6/7_hu2688179c0a4e390274edeac8b3d8f5bc_72849_480x0_resize_q75_box.jpg 480w, /p/workday6/7_hu2688179c0a4e390274edeac8b3d8f5bc_72849_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 7 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="95"
+		data-flex-basis="229px"
+	
+></p>
+<h2 id="heading-7">
+</h2><p>接下来，我们应该选择怎么去给小船发送信号来控制它，对比红外线信号，蓝牙信号的相对传输大一些，对比wifi信号，蓝牙信号相对弱一点，比较小船的场景设置是在水中，有线连接它的话虽然控制信号稳定，但会耗材，所以我们选择蓝牙来发送，信号，蓝牙模块的话，我选择HC-06四角，因为主板预留了蓝牙接口，所以正好。
+<img src="/p/workday6/8.jpg"
+	width="621"
+	height="636"
+	srcset="/p/workday6/8_hu9fb2921cb9520283295e0ef893e06baa_69604_480x0_resize_q75_box.jpg 480w, /p/workday6/8_hu9fb2921cb9520283295e0ef893e06baa_69604_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 8 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="97"
+		data-flex-basis="234px"
+	
+></p>
+<h2 id="heading-8">
+</h2><p>然后主板和模块选完了，我们还需要船体和杜邦线，船体可以选择泡沫板，杜邦线用于将主板和模块连接起来。
+<img src="/p/workday6/9.jpg"
+	width="648"
+	height="362"
+	srcset="/p/workday6/9_hu94c583fc76ea0fe412ff1a53b6018d18_24641_480x0_resize_q75_box.jpg 480w, /p/workday6/9_hu94c583fc76ea0fe412ff1a53b6018d18_24641_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 9 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="429px"
+	
+>
+<img src="/p/workday6/10.jpg"
+	width="691"
+	height="605"
+	srcset="/p/workday6/10_hu52dc40c12aad607a62ac020170d8aa6b_34433_480x0_resize_q75_box.jpg 480w, /p/workday6/10_hu52dc40c12aad607a62ac020170d8aa6b_34433_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 10 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="114"
+		data-flex-basis="274px"
+	
+></p>
+<h2 id="heading-9">
+</h2><p>该有的船体，电控都已经有了，现在就可以去写驱动，让板子可以动起来，同时为最后小船的组装搭建良好的基础。</p>
+<blockquote>
+</blockquote>
+<p>这个代码是小灯电亮和关闭的程序，我们用这个代码，只要改一下，当蓝牙接通后，小灯打开就可以了，我们使用if语句就行。
+<img src="/p/workday6/11.jpg"
+	width="662"
+	height="397"
+	srcset="/p/workday6/11_huc44ae80c06af354a578919b534fa1179_40139_480x0_resize_q75_box.jpg 480w, /p/workday6/11_huc44ae80c06af354a578919b534fa1179_40139_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 11 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<blockquote>
+</blockquote>
+<p>接下来我们需要的舵机代码和电机代码
+<img src="/p/workday6/12.jpg"
+	width="701"
+	height="442"
+	srcset="/p/workday6/12_huc678a04721e5f9557d2b96a93020210a_42595_480x0_resize_q75_box.jpg 480w, /p/workday6/12_huc678a04721e5f9557d2b96a93020210a_42595_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 12 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="380px"
+	
+>
+<img src="/p/workday6/13.jpg"
+	width="652"
+	height="567"
+	srcset="/p/workday6/13_hue401cab7002462dcaf2b1ddcaaf6970d_61313_480x0_resize_q75_box.jpg 480w, /p/workday6/13_hue401cab7002462dcaf2b1ddcaaf6970d_61313_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 13 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="114"
+		data-flex-basis="275px"
+	
+>
+电机和舵机代码，搭配蓝牙信号的发送左，右，前，后的指令后使用它。</p>
+<blockquote>
+</blockquote>
+<p>接下来就是蓝牙模块的代码展示
+<img src="/p/workday6/14.jpg"
+	width="752"
+	height="616"
+	srcset="/p/workday6/14_hu3c79274fb8f11055277680a60991be08_74319_480x0_resize_q75_box.jpg 480w, /p/workday6/14_hu3c79274fb8f11055277680a60991be08_74319_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 14 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="292px"
+	
+></p>
+<blockquote>
+</blockquote>
+<p>然后我们把代码整合一下，用USB线上传进主板里，就可以完成电路驱动了，然后我们将船体和电路驱动用胶带，热熔胶等物体固定，就可以下水测试了。</p>
+<blockquote>
+</blockquote>
+<p><img src="/p/workday6/15.jpg"
+	width="597"
+	height="57"
+	srcset="/p/workday6/15_hued0c89505decf0e48ce5c2f571772f6a_9725_480x0_resize_q75_box.jpg 480w, /p/workday6/15_hued0c89505decf0e48ce5c2f571772f6a_9725_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 15 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1047"
+		data-flex-basis="2513px"
+	
+></p>
+<h2 id="引用">引用
+</h2><blockquote>
+<p>如同那老街灯下，岁月静好的等待，</p>
+<p>在流转的时光里，始终有一抹温暖色彩。</p>
+<p>让心灵随歌轻摆，感受那一份实在，</p>
+<p>让生活的诗篇，成为爱情最真的告白。</p>
+<p><em><a class="link" href="https://www.bilibili.com/video/BV19X4y117NC/?spm_id_from=333.337.search-card.all.click"  target="_blank" rel="noopener"
+    >程艾影 - 赵雷</a></em></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 康小轩
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<div id="aplayer"></div>
+<script>
+    const musicDir = "https://sunshineboy818.github.io/" + 'music/';
+    const songs = [
+        '别知己-海来阿木',
+        '不如见一面-海来阿木，单依纯',
+        '车载-康小轩',
+        '最好的安排-谢天笑',
+        '出现又离开-梁博',
+        '凡人歌-李宗盛',
+        '妈妈说-海来阿木',
+        '三生有幸-海来阿木，陈冰谁-王贰浪',
+        '探故知-吉泽树',
+        '无名的人-孙楠，陈楚生',
+        '戏-阿夏',
+        '这世界有很多人爱你的人-超星，陈奕楠',
+    ];
+
+    let audios = [];
+    songs.forEach(item => {
+        const songInfo = item.split('-');
+        audios.push({
+            name: songInfo[0],
+            artist: songInfo[1],
+            url: musicDir + item + '/song.mp3',
+        });
+    });
+
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+	fixed: true,
+	listMaxHeight: '120px',
+        audio: audios,
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+
+    
+    <script src=https://sunshineboy818.github.io/js/topbar.min.js></script>
+
+
+<script>
+    var pjax = new Pjax({
+      selectors: [".main-container"]
+    })
+    pjax._handleResponse = pjax.handleResponse;
+
+    pjax.handleResponse = function(responseText, request, href, options) {
+      if (request.responseText.match("<html")) {
+        let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+        
+        let bodyClass = newDom.body.className;
+        document.body.setAttribute("class", bodyClass)
+        pjax._handleResponse(responseText, request, href, options);
+        setTimeout(() => {
+            pjax._handleResponse(responseText,request,href,options);
+        },1000)
+      } else {
+        
+      }
+    }
+
+    document.addEventListener('pjax:send', () => {
+        topbar.show();
+    })
+    document.addEventListener('pjax:complete', () =>{
+       window.Stack.init();
+       topbar.hide();
+    })
+</script>
+
+
+    </body>
+</html>

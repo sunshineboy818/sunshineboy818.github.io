@@ -7,7 +7,268 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>康小轩</copyright>
-        <lastBuildDate>Tue, 01 Apr 2025 23:55:19 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 03 Apr 2025 13:48:39 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Workday6</title>
+        <link>https://sunshineboy818.github.io/p/workday6/</link>
+        <pubDate>Thu, 03 Apr 2025 13:48:39 +0800</pubDate>
+        
+        <guid>https://sunshineboy818.github.io/p/workday6/</guid>
+        <description>&lt;img src="https://sunshineboy818.github.io/p/workday6/1.jpg" alt="Featured image of post Workday6" /&gt;&lt;h2 id=&#34;heading&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;正文&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;紧接着上文设计的电路板充电模块，我们现已有充电模块，电源提供电路板和基本外设的电压和电流已经配置好，接下来我们就可以按照目的寻找我们所要用的开发板及所用的外设，接下来我们插入图片，来一一说明我其中的一个项目的设计流程。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;首先，我们要确定开发板，开发板相当于人的大脑，可以接受信息，并且可以将信息转换为电路板可识别的信号，然后驱动外设完成我们想要电路板去完成的特定动作，我的小窗设计，开发板选择Arduino uno开发板。&lt;/p&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/1.jpg&#34;
+	width=&#34;861&#34;
+	height=&#34;607&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/1_huceafa8750dd58dbd67b93a2877395d54_102201_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 1 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/2.jpg&#34;
+	width=&#34;1062&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/2_hu8390362adc9387939bbc98422102ec93_211918_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/2_hu8390362adc9387939bbc98422102ec93_211918_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 2 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/3.jpg&#34;
+	width=&#34;862&#34;
+	height=&#34;765&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/3_hu90feb291eb35592f1697371fd7a52684_106882_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/3_hu90feb291eb35592f1697371fd7a52684_106882_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 3 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;112&#34;
+		data-flex-basis=&#34;270px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/4.jpg&#34;
+	width=&#34;841&#34;
+	height=&#34;307&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/4_hu9e49fe348e2740cd299e508e91fa3408_98024_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/4_hu9e49fe348e2740cd299e508e91fa3408_98024_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 4 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;273&#34;
+		data-flex-basis=&#34;657px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-4&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;通过这几张图，我们可以看到我们的开发板的样子，它由什么部分组成，每个部分有什么功能，我们本次的设计是否可以用这张板子，并且它的电压及电流等注意事项，而选择这个板子就是因为它满足我们小船项目的设计，首先它的电压及电流适合我们前文所说的充电模块可充电，降压模块降压到板子可用的电压和电流。&lt;/p&gt;
+&lt;h2 id=&#34;heading-5&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;小船首先需要设计的是它的动力装置，比如小船在水上前进，后退，左转，右转应该用什么来实现，我选择的两个电机驱动，因为这个主板刚好有2个直流电机的端口，可以插入到主板上预留的电机端子，我们所选的电机是空心杯电机，它的优点是小巧，轻薄，转速高，适用于水上驱动。
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/5.jpg&#34;
+	width=&#34;647&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/5_hu63179f7a3ea13e4f2616f9492bab9757_36639_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/5_hu63179f7a3ea13e4f2616f9492bab9757_36639_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 5 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;104&#34;
+		data-flex-basis=&#34;251px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-6&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;小船的电机驱动做好了之后，我们其实还需要两个舵机，这两个舵机可以用麦王铁丝拉动船尾的船叶，来实现左转和右转。
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/6.jpg&#34;
+	width=&#34;818&#34;
+	height=&#34;616&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/6_hud84615ed088998a94525db311c3eeece_41456_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/6_hud84615ed088998a94525db311c3eeece_41456_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 6 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/7.jpg&#34;
+	width=&#34;643&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/7_hu2688179c0a4e390274edeac8b3d8f5bc_72849_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/7_hu2688179c0a4e390274edeac8b3d8f5bc_72849_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 7 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;229px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-7&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;接下来，我们应该选择怎么去给小船发送信号来控制它，对比红外线信号，蓝牙信号的相对传输大一些，对比wifi信号，蓝牙信号相对弱一点，比较小船的场景设置是在水中，有线连接它的话虽然控制信号稳定，但会耗材，所以我们选择蓝牙来发送，信号，蓝牙模块的话，我选择HC-06四角，因为主板预留了蓝牙接口，所以正好。
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/8.jpg&#34;
+	width=&#34;621&#34;
+	height=&#34;636&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/8_hu9fb2921cb9520283295e0ef893e06baa_69604_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/8_hu9fb2921cb9520283295e0ef893e06baa_69604_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 8 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;97&#34;
+		data-flex-basis=&#34;234px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-8&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;然后主板和模块选完了，我们还需要船体和杜邦线，船体可以选择泡沫板，杜邦线用于将主板和模块连接起来。
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/9.jpg&#34;
+	width=&#34;648&#34;
+	height=&#34;362&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/9_hu94c583fc76ea0fe412ff1a53b6018d18_24641_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/9_hu94c583fc76ea0fe412ff1a53b6018d18_24641_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 9 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;429px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/10.jpg&#34;
+	width=&#34;691&#34;
+	height=&#34;605&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/10_hu52dc40c12aad607a62ac020170d8aa6b_34433_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/10_hu52dc40c12aad607a62ac020170d8aa6b_34433_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 10 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;114&#34;
+		data-flex-basis=&#34;274px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-9&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;该有的船体，电控都已经有了，现在就可以去写驱动，让板子可以动起来，同时为最后小船的组装搭建良好的基础。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这个代码是小灯电亮和关闭的程序，我们用这个代码，只要改一下，当蓝牙接通后，小灯打开就可以了，我们使用if语句就行。
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/11.jpg&#34;
+	width=&#34;662&#34;
+	height=&#34;397&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/11_huc44ae80c06af354a578919b534fa1179_40139_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/11_huc44ae80c06af354a578919b534fa1179_40139_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 11 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来我们需要的舵机代码和电机代码
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/12.jpg&#34;
+	width=&#34;701&#34;
+	height=&#34;442&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/12_huc678a04721e5f9557d2b96a93020210a_42595_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/12_huc678a04721e5f9557d2b96a93020210a_42595_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 12 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/13.jpg&#34;
+	width=&#34;652&#34;
+	height=&#34;567&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/13_hue401cab7002462dcaf2b1ddcaaf6970d_61313_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/13_hue401cab7002462dcaf2b1ddcaaf6970d_61313_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 13 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;114&#34;
+		data-flex-basis=&#34;275px&#34;
+	
+&gt;
+电机和舵机代码，搭配蓝牙信号的发送左，右，前，后的指令后使用它。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来就是蓝牙模块的代码展示
+&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/14.jpg&#34;
+	width=&#34;752&#34;
+	height=&#34;616&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/14_hu3c79274fb8f11055277680a60991be08_74319_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/14_hu3c79274fb8f11055277680a60991be08_74319_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 14 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;122&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后我们把代码整合一下，用USB线上传进主板里，就可以完成电路驱动了，然后我们将船体和电路驱动用胶带，热熔胶等物体固定，就可以下水测试了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday6/15.jpg&#34;
+	width=&#34;597&#34;
+	height=&#34;57&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday6/15_hued0c89505decf0e48ce5c2f571772f6a_9725_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday6/15_hued0c89505decf0e48ce5c2f571772f6a_9725_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 15 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1047&#34;
+		data-flex-basis=&#34;2513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;引用&#34;&gt;引用
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;如同那老街灯下，岁月静好的等待，&lt;/p&gt;
+&lt;p&gt;在流转的时光里，始终有一抹温暖色彩。&lt;/p&gt;
+&lt;p&gt;让心灵随歌轻摆，感受那一份实在，&lt;/p&gt;
+&lt;p&gt;让生活的诗篇，成为爱情最真的告白。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV19X4y117NC/?spm_id_from=333.337.search-card.all.click&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;程艾影 - 赵雷&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Workday5</title>
         <link>https://sunshineboy818.github.io/p/workday5/</link>
         <pubDate>Tue, 01 Apr 2025 23:55:19 +0800</pubDate>
