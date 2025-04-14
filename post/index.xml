@@ -7,7 +7,195 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>康小轩</copyright>
-        <lastBuildDate>Sun, 06 Apr 2025 23:46:26 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Apr 2025 18:37:04 +0800</lastBuildDate><atom:link href="https://sunshineboy818.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Workday8</title>
+        <link>https://sunshineboy818.github.io/p/workday8/</link>
+        <pubDate>Sun, 13 Apr 2025 18:37:04 +0800</pubDate>
+        
+        <guid>https://sunshineboy818.github.io/p/workday8/</guid>
+        <description>&lt;img src="https://sunshineboy818.github.io/p/workday8/1.jpg" alt="Featured image of post Workday8" /&gt;&lt;h2 id=&#34;heading&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;基于stm32单片机的无人机遥控器设计&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/1.jpg&#34;
+	width=&#34;1767&#34;
+	height=&#34;1249&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 1 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;339px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;遥控器的需求，讲求小巧，轻便，功耗低，信号连接稳定的特点，下面就从电路原理图的各个模块设计，讲述一下电路板的设计。&lt;/p&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;首先是电源模块的设计，电源采用可充电锂电池3.7V锂电池充电，电路板把3.7V锂电池充电的这个设计为电路板输入口PH2.0，原因是3.7V锂电池电池它有充电器，所以为了减小电路板的设计难度，所以取消充电设计，用官方数据线充电更加安全与保险，电压信号进来，为了能够给我们主板stm32供电，还必须继续小分量的降压，将3.7V-&amp;gt;3.3V，我们这边所采用的模块是ME6212降压芯片，根据数据手册原理图，将电压降到符合自己需求的电压，为了让电源实现可视化，我们给他加了adc采样电路，使用两个电阻并联分压，实现ADC检测，ADC端口用到了ADC13_CH3通道，下面图示为降压模块芯片的典型应用电路。&lt;/p&gt;
+&lt;h2 id=&#34;heading-4&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/2.jpg&#34;
+	width=&#34;1576&#34;
+	height=&#34;613&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/2_hu1d864cd0699ebb5db00fd10402b4e650_47254_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/2_hu1d864cd0699ebb5db00fd10402b4e650_47254_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 2 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;257&#34;
+		data-flex-basis=&#34;617px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-5&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;接下来，我们需要对无人机控制信号做出部署，本次的无人机采用NRF01L模块作为无人飞机的控制模块，所以根据通信协议及NRF01L模块的数据手册，我们需要在遥控器上部署NRF01L模块，从数据手册来看，它与主板是以SPI协议进行通信的，所以我们必须按照我们主控的数据手册查找我们的管脚定义，找到对应于SPI协议的管脚进行连接，对于这个模块，除了SPI协议外的管脚，其余是使能，中断及电源引脚，以下为数据手册的模块单片机典型连接电路及管脚的定义。&lt;/p&gt;
+&lt;h2 id=&#34;heading-6&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/3.jpg&#34;
+	width=&#34;806&#34;
+	height=&#34;417&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/3_hu6a4fddd76cc73bb98b4f12dd8787b8cd_42749_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/3_hu6a4fddd76cc73bb98b4f12dd8787b8cd_42749_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 3 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;463px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-7&#34;&gt;
+&lt;/h2&gt;&lt;h2 id=&#34;heading-8&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/5.jpg&#34;
+	width=&#34;766&#34;
+	height=&#34;648&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/5_hu57d3017f2b71869f4439f0d65c652e64_136590_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/5_hu57d3017f2b71869f4439f0d65c652e64_136590_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 5 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-9&#34;&gt;
+&lt;/h2&gt;&lt;h2 id=&#34;heading-10&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/4.jpg&#34;
+	width=&#34;762&#34;
+	height=&#34;347&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/4_hud8bf4296239862d03182e7234266b04b_55081_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/4_hud8bf4296239862d03182e7234266b04b_55081_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 4 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;219&#34;
+		data-flex-basis=&#34;527px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-11&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;然后就是显示屏的设计及uart通信调试的设计，我们了解显示屏硬件可知，0.96寸显示屏有两种通信协议方式，一种是IIC协议和SPI协议，我们为了更加方便简洁的去操控显示器的话，我们需要通过IIC通信协议去控制它，对于显示屏，我们直接去数据手册找到主板对应IIC的管脚，并且拉出来就行，uart也是一样，再加上两者的电源引脚，一般这两个低功耗的情况下都是3.3V供电，所以符合我们降压后的电压。&lt;/p&gt;
+&lt;h2 id=&#34;heading-12&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/6.jpg&#34;
+	width=&#34;531&#34;
+	height=&#34;723&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/6_hu156e8e22e8f4bb4ac6920a07b6731062_63756_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/6_hu156e8e22e8f4bb4ac6920a07b6731062_63756_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 6 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;73&#34;
+		data-flex-basis=&#34;176px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-13&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/7.jpg&#34;
+	width=&#34;1267&#34;
+	height=&#34;388&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/7_hufeaa21ae5b9aa6fef9660e0fa0deda98_76249_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/7_hufeaa21ae5b9aa6fef9660e0fa0deda98_76249_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 7 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;326&#34;
+		data-flex-basis=&#34;783px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-14&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;那我们接下来需要设计无人机的控制按钮，用来控制无人机，最简单的方式就是我这种，通过4个按键去调节电机的PID来实现无人机的上升下降，左转和右转，除了这些按键，其实我们也可以加一下个性化的设计，比如无人机的定速巡航按钮，急停按钮，摄像头开启/关闭按钮。&lt;/p&gt;
+&lt;h2 id=&#34;heading-15&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/8.jpg&#34;
+	width=&#34;567&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/8_hu96b583108fedaa3b2801ff82d41d18a9_84158_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/8_hu96b583108fedaa3b2801ff82d41d18a9_84158_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 8 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;72&#34;
+		data-flex-basis=&#34;174px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-16&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;对于主控电路，因为我们直接选型stm32最小系统开发板来减少电路板硬件材料及焊接的难度，实现高效的开发。&lt;/p&gt;
+&lt;h2 id=&#34;heading-17&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/9.jpg&#34;
+	width=&#34;1547&#34;
+	height=&#34;641&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/9_hu1b1b1663363e8596b6da30056f4143c0_274049_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/9_hu1b1b1663363e8596b6da30056f4143c0_274049_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 9 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;579px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-18&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;为了测试电路板拿到手能不能用，我们除了仿真测试，硬件测试还有软件测试,我们还需要用一个单片机的主板拉出一个IO口进行LED指示，电源哪里其实也应该做一个led来测试电源电路是否导通的设计，除了这些，其实我们应该把判断遥控器是否连接上无人机信号的功能作为LED的输出，方便我们更好的去调试无人机的遥控器控制。&lt;/p&gt;
+&lt;h2 id=&#34;heading-19&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;最后，为了方便外扩，我们把单片机剩余的IO口拉出来，作为无人机和遥控器的扩展功能。&lt;/p&gt;
+&lt;h2 id=&#34;heading-20&#34;&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sunshineboy818.github.io/p/workday8/10.jpg&#34;
+	width=&#34;558&#34;
+	height=&#34;491&#34;
+	srcset=&#34;https://sunshineboy818.github.io/p/workday8/10_hud617666ff17c441454fb92527a735822_74450_480x0_resize_q75_box.jpg 480w, https://sunshineboy818.github.io/p/workday8/10_hud617666ff17c441454fb92527a735822_74450_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Photo by 10 on Unsplash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;272px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-21&#34;&gt;
+&lt;/h2&gt;&lt;h2 id=&#34;引用&#34;&gt;引用
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;我们在生活的洪流里漂泊流浪，&lt;/p&gt;
+&lt;p&gt;寻找着那片属于自己的光亮。&lt;/p&gt;
+&lt;p&gt;哪怕风雨兼程，哪怕岁月漫长，&lt;/p&gt;
+&lt;p&gt;心中的渴望，始终未曾遗忘。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1LW411w7mM/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=0967de655cabe0f2408d0d6630f75d64&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;流浪 - 卢焱&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Workday7</title>
         <link>https://sunshineboy818.github.io/p/workday7/</link>
         <pubDate>Sun, 06 Apr 2025 23:46:26 +0800</pubDate>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="基于stm32单片机的无人机遥控器设计 遥控器的需求，讲求小巧，轻便，功耗低，信号连接稳定的特点，下面就从电路原理图的各个模块设计，讲述一下电">
+<title>Workday8</title>
+
+<link rel='canonical' href='https://sunshineboy818.github.io/p/workday8/'>
+
+<link rel="stylesheet" href="/scss/style.min.82aebb571a30eb91e8092de55330c6a938539608ddc92a5704fbf878b02a4ea0.css"><meta property='og:title' content="Workday8">
+<meta property='og:description' content="基于stm32单片机的无人机遥控器设计 遥控器的需求，讲求小巧，轻便，功耗低，信号连接稳定的特点，下面就从电路原理图的各个模块设计，讲述一下电">
+<meta property='og:url' content='https://sunshineboy818.github.io/p/workday8/'>
+<meta property='og:site_name' content='康小轩'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-13T18:37:04&#43;08:00'/><meta property='article:modified_time' content='2025-04-13T18:37:04&#43;08:00'/><meta property='og:image' content='https://sunshineboy818.github.io/p/workday8/1.jpg' />
+<meta name="twitter:title" content="Workday8">
+<meta name="twitter:description" content="基于stm32单片机的无人机遥控器设计 遥控器的需求，讲求小巧，轻便，功耗低，信号连接稳定的特点，下面就从电路原理图的各个模块设计，讲述一下电"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sunshineboy818.github.io/p/workday8/1.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud333012b47664f142cc05dde610dba8f_61053_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😜</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">康小轩</a></h1>
+            <h2 class="site-description">记录美好生活.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://music.163.com/#/user/home?id=574714253'
+                        target="_blank"
+                        title="NetEase Cloud"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <path d="M16.708 0.027c1.745-0.027 3.48-0.011 5.213-0.027 0.105 2.041 0.839 4.12 2.333 5.563 1.491 1.479 3.6 2.156 5.652 2.385v5.369c-1.923-0.063-3.855-0.463-5.6-1.291-0.76-0.344-1.468-0.787-2.161-1.24-0.009 3.896 0.016 7.787-0.025 11.667-0.104 1.864-0.719 3.719-1.803 5.255-1.744 2.557-4.771 4.224-7.88 4.276-1.907 0.109-3.812-0.411-5.437-1.369-2.693-1.588-4.588-4.495-4.864-7.615-0.032-0.667-0.043-1.333-0.016-1.984 0.24-2.537 1.495-4.964 3.443-6.615 2.208-1.923 5.301-2.839 8.197-2.297 0.027 1.975-0.052 3.948-0.052 5.923-1.323-0.428-2.869-0.308-4.025 0.495-0.844 0.547-1.485 1.385-1.819 2.333-0.276 0.676-0.197 1.427-0.181 2.145 0.317 2.188 2.421 4.027 4.667 3.828 1.489-0.016 2.916-0.88 3.692-2.145 0.251-0.443 0.532-0.896 0.547-1.417 0.131-2.385 0.079-4.76 0.095-7.145 0.011-5.375-0.016-10.735 0.025-16.093z"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a></li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+    <li><a href="#heading-17"></a></li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a></li>
+    <li><a href="#heading-20"></a></li>
+    <li><a href="#heading-21"></a></li>
+    <li><a href="#引用">引用</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/workday8/">
+                <img src="/p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_800x0_resize_q75_box.jpg"
+                        srcset="/p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_800x0_resize_q75_box.jpg 800w, /p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="565" 
+                        loading="lazy"
+                        alt="Featured image of post Workday8" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/workday8/">Workday8</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-13</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="heading">
+</h2><p>基于stm32单片机的无人机遥控器设计</p>
+<h2 id="heading-1">
+</h2><p><img src="/p/workday8/1.jpg"
+	width="1767"
+	height="1249"
+	srcset="/p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_480x0_resize_q75_box.jpg 480w, /p/workday8/1_hu7bdb3b4a42e455d1bd56e0da956186ad_275448_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 1 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="339px"
+	
+></p>
+<h2 id="heading-2">
+</h2><p>遥控器的需求，讲求小巧，轻便，功耗低，信号连接稳定的特点，下面就从电路原理图的各个模块设计，讲述一下电路板的设计。</p>
+<h2 id="heading-3">
+</h2><p>首先是电源模块的设计，电源采用可充电锂电池3.7V锂电池充电，电路板把3.7V锂电池充电的这个设计为电路板输入口PH2.0，原因是3.7V锂电池电池它有充电器，所以为了减小电路板的设计难度，所以取消充电设计，用官方数据线充电更加安全与保险，电压信号进来，为了能够给我们主板stm32供电，还必须继续小分量的降压，将3.7V-&gt;3.3V，我们这边所采用的模块是ME6212降压芯片，根据数据手册原理图，将电压降到符合自己需求的电压，为了让电源实现可视化，我们给他加了adc采样电路，使用两个电阻并联分压，实现ADC检测，ADC端口用到了ADC13_CH3通道，下面图示为降压模块芯片的典型应用电路。</p>
+<h2 id="heading-4">
+</h2><p><img src="/p/workday8/2.jpg"
+	width="1576"
+	height="613"
+	srcset="/p/workday8/2_hu1d864cd0699ebb5db00fd10402b4e650_47254_480x0_resize_q75_box.jpg 480w, /p/workday8/2_hu1d864cd0699ebb5db00fd10402b4e650_47254_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 2 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="257"
+		data-flex-basis="617px"
+	
+></p>
+<h2 id="heading-5">
+</h2><p>接下来，我们需要对无人机控制信号做出部署，本次的无人机采用NRF01L模块作为无人飞机的控制模块，所以根据通信协议及NRF01L模块的数据手册，我们需要在遥控器上部署NRF01L模块，从数据手册来看，它与主板是以SPI协议进行通信的，所以我们必须按照我们主控的数据手册查找我们的管脚定义，找到对应于SPI协议的管脚进行连接，对于这个模块，除了SPI协议外的管脚，其余是使能，中断及电源引脚，以下为数据手册的模块单片机典型连接电路及管脚的定义。</p>
+<h2 id="heading-6">
+</h2><p><img src="/p/workday8/3.jpg"
+	width="806"
+	height="417"
+	srcset="/p/workday8/3_hu6a4fddd76cc73bb98b4f12dd8787b8cd_42749_480x0_resize_q75_box.jpg 480w, /p/workday8/3_hu6a4fddd76cc73bb98b4f12dd8787b8cd_42749_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 3 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="463px"
+	
+></p>
+<h2 id="heading-7">
+</h2><h2 id="heading-8">
+</h2><p><img src="/p/workday8/5.jpg"
+	width="766"
+	height="648"
+	srcset="/p/workday8/5_hu57d3017f2b71869f4439f0d65c652e64_136590_480x0_resize_q75_box.jpg 480w, /p/workday8/5_hu57d3017f2b71869f4439f0d65c652e64_136590_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 5 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="283px"
+	
+></p>
+<h2 id="heading-9">
+</h2><h2 id="heading-10">
+</h2><p><img src="/p/workday8/4.jpg"
+	width="762"
+	height="347"
+	srcset="/p/workday8/4_hud8bf4296239862d03182e7234266b04b_55081_480x0_resize_q75_box.jpg 480w, /p/workday8/4_hud8bf4296239862d03182e7234266b04b_55081_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 4 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="219"
+		data-flex-basis="527px"
+	
+></p>
+<h2 id="heading-11">
+</h2><p>然后就是显示屏的设计及uart通信调试的设计，我们了解显示屏硬件可知，0.96寸显示屏有两种通信协议方式，一种是IIC协议和SPI协议，我们为了更加方便简洁的去操控显示器的话，我们需要通过IIC通信协议去控制它，对于显示屏，我们直接去数据手册找到主板对应IIC的管脚，并且拉出来就行，uart也是一样，再加上两者的电源引脚，一般这两个低功耗的情况下都是3.3V供电，所以符合我们降压后的电压。</p>
+<h2 id="heading-12">
+</h2><p><img src="/p/workday8/6.jpg"
+	width="531"
+	height="723"
+	srcset="/p/workday8/6_hu156e8e22e8f4bb4ac6920a07b6731062_63756_480x0_resize_q75_box.jpg 480w, /p/workday8/6_hu156e8e22e8f4bb4ac6920a07b6731062_63756_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 6 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="73"
+		data-flex-basis="176px"
+	
+></p>
+<h2 id="heading-13">
+</h2><p><img src="/p/workday8/7.jpg"
+	width="1267"
+	height="388"
+	srcset="/p/workday8/7_hufeaa21ae5b9aa6fef9660e0fa0deda98_76249_480x0_resize_q75_box.jpg 480w, /p/workday8/7_hufeaa21ae5b9aa6fef9660e0fa0deda98_76249_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 7 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="326"
+		data-flex-basis="783px"
+	
+></p>
+<h2 id="heading-14">
+</h2><p>那我们接下来需要设计无人机的控制按钮，用来控制无人机，最简单的方式就是我这种，通过4个按键去调节电机的PID来实现无人机的上升下降，左转和右转，除了这些按键，其实我们也可以加一下个性化的设计，比如无人机的定速巡航按钮，急停按钮，摄像头开启/关闭按钮。</p>
+<h2 id="heading-15">
+</h2><p><img src="/p/workday8/8.jpg"
+	width="567"
+	height="778"
+	srcset="/p/workday8/8_hu96b583108fedaa3b2801ff82d41d18a9_84158_480x0_resize_q75_box.jpg 480w, /p/workday8/8_hu96b583108fedaa3b2801ff82d41d18a9_84158_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 8 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="72"
+		data-flex-basis="174px"
+	
+></p>
+<h2 id="heading-16">
+</h2><p>对于主控电路，因为我们直接选型stm32最小系统开发板来减少电路板硬件材料及焊接的难度，实现高效的开发。</p>
+<h2 id="heading-17">
+</h2><p><img src="/p/workday8/9.jpg"
+	width="1547"
+	height="641"
+	srcset="/p/workday8/9_hu1b1b1663363e8596b6da30056f4143c0_274049_480x0_resize_q75_box.jpg 480w, /p/workday8/9_hu1b1b1663363e8596b6da30056f4143c0_274049_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 9 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="579px"
+	
+></p>
+<h2 id="heading-18">
+</h2><p>为了测试电路板拿到手能不能用，我们除了仿真测试，硬件测试还有软件测试,我们还需要用一个单片机的主板拉出一个IO口进行LED指示，电源哪里其实也应该做一个led来测试电源电路是否导通的设计，除了这些，其实我们应该把判断遥控器是否连接上无人机信号的功能作为LED的输出，方便我们更好的去调试无人机的遥控器控制。</p>
+<h2 id="heading-19">
+</h2><p>最后，为了方便外扩，我们把单片机剩余的IO口拉出来，作为无人机和遥控器的扩展功能。</p>
+<h2 id="heading-20">
+</h2><p><img src="/p/workday8/10.jpg"
+	width="558"
+	height="491"
+	srcset="/p/workday8/10_hud617666ff17c441454fb92527a735822_74450_480x0_resize_q75_box.jpg 480w, /p/workday8/10_hud617666ff17c441454fb92527a735822_74450_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Photo by 10 on Unsplash"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="272px"
+	
+></p>
+<h2 id="heading-21">
+</h2><h2 id="引用">引用
+</h2><blockquote>
+<p>我们在生活的洪流里漂泊流浪，</p>
+<p>寻找着那片属于自己的光亮。</p>
+<p>哪怕风雨兼程，哪怕岁月漫长，</p>
+<p>心中的渴望，始终未曾遗忘。</p>
+<p><em><a class="link" href="https://www.bilibili.com/video/BV1LW411w7mM/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0967de655cabe0f2408d0d6630f75d64"  target="_blank" rel="noopener"
+    >流浪 - 卢焱</a></em></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 康小轩
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<div id="aplayer"></div>
+<script>
+    const musicDir = "https://sunshineboy818.github.io/" + 'music/';
+    const songs = [
+	'火红的撒日朗-乌兰托娅',
+	'清风徐来-王菲',
+	'是你-梦然',
+	'程艾影-赵雷',
+        '别知己-海来阿木',
+        '不如见一面-海来阿木，单依纯',
+        '车载-康小轩',
+        '最好的安排-谢天笑',
+	'谁-王贰浪',
+        '出现又离开-梁博',
+        '凡人歌-李宗盛',
+        '妈妈说-海来阿木',
+        '三生有幸-海来阿木，陈冰谁-王贰浪',
+        '探故知-吉泽树',
+        '无名的人-孙楠，陈楚生',
+        '戏-阿夏',
+	'异乡人-李健',
+        '这世界有很多人爱你的人-超星，陈奕楠',
+    ];
+
+    let audios = [];
+    songs.forEach(item => {
+        const songInfo = item.split('-');
+        audios.push({
+            name: songInfo[0],
+            artist: songInfo[1],
+            url: musicDir + item + '/song.mp3',
+        });
+    });
+
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+	fixed: true,
+	listMaxHeight: '120px',
+        audio: audios,
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+
+    
+    <script src=https://sunshineboy818.github.io/js/topbar.min.js></script>
+
+
+<script>
+    var pjax = new Pjax({
+      selectors: [".main-container"]
+    })
+    pjax._handleResponse = pjax.handleResponse;
+
+    pjax.handleResponse = function(responseText, request, href, options) {
+      if (request.responseText.match("<html")) {
+        let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+        
+        let bodyClass = newDom.body.className;
+        document.body.setAttribute("class", bodyClass)
+        pjax._handleResponse(responseText, request, href, options);
+        setTimeout(() => {
+            pjax._handleResponse(responseText,request,href,options);
+        },1000)
+      } else {
+        
+      }
+    }
+
+    document.addEventListener('pjax:send', () => {
+        topbar.show();
+    })
+    document.addEventListener('pjax:complete', () =>{
+       window.Stack.init();
+       topbar.hide();
+    })
+</script>
+
+<style>
+  body {
+    background: url(https://sunshineboy818.github.io/background/1.jpeg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+<script src="https://sunshineboy818.github.io/background/sakura.js"></script>
+
+<script>
+  
+  const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
+
+  
+  const cssPath = "https:\/\/sunshineboy818.github.io\/waifu\/waifu.css";
+  const waifuTipsJsonPath = "https:\/\/sunshineboy818.github.io\/waifu\/waifu-tips.json";
+
+  
+
+  function loadExternalResource(url, type) {
+    return new Promise((resolve, reject) => {
+      if (!url) {
+        console.warn(`资源路径为空，跳过加载 ${type}`);
+        resolve();
+        return;
+      }
+
+      let tag;
+
+      if (type === "css") {
+        tag = document.createElement("link");
+        tag.rel = "stylesheet";
+        tag.href = url;
+      } else if (type === "js") {
+        tag = document.createElement("script");
+        tag.src = url;
+      }
+
+      if (tag) {
+        tag.onload = () => {
+          console.log(`成功加载资源: ${url}`);
+          resolve(url);
+        };
+        tag.onerror = () => {
+          console.error(`加载资源失败: ${url}`);
+          reject(url);
+        };
+        document.head.appendChild(tag);
+      } else {
+        console.error(`未知资源类型: ${type}`);
+        reject(type);
+      }
+    });
+  }
+
+  
+  if (window.innerWidth >= 768) {
+    Promise.allSettled([
+      loadExternalResource(cssPath, "css"),
+      loadExternalResource(live2d_path + "live2d.min.js", "js"),
+      loadExternalResource(live2d_path + "waifu-tips.js", "js")
+    ]).then(() => {
+      
+      if (typeof initWidget === "function") {
+        initWidget({
+          waifuPath: waifuTipsJsonPath,
+          cdnPath: "https://cdn.jsdelivr.net/gh/sunshineboy818/static-resource@v1.0.0",
+          tools: [
+            "hitokoto",
+            "asteroids",
+            "switch-model",
+            "switch-texture",
+            "photo",
+            "info",
+            "quit"
+          ]
+        });
+      } else {
+        console.error("initWidget 函数未定义，请检查 live2d.min.js 是否加载成功！");
+      }
+    }).catch((errors) => {
+      console.error("部分资源加载失败:", errors);
+    });
+  }
+</script>
+    </body>
+</html>
